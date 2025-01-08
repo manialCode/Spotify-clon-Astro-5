@@ -1,5 +1,5 @@
 ---
-import AsideMenu from "../components/AsideMenu.astro";
+import SideMenu from "../components/SideMenu.astro";
 ---
 
 <!doctype html>
@@ -14,15 +14,15 @@ import AsideMenu from "../components/AsideMenu.astro";
   <body>
     <div id="app" class="relative h-screen p-2 gap-2">
       <aside class="[grid-area:aside] flex-col flex overflow-y-auto">
-        <AsideMenu />
+        <SideMenu />
       </aside>
 
       <main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto">
+        <slot />
       </main>
 
       <footer class="[grid-area:player] min-h-[100px]">Footer</footer>
     </div>
-    <slot />
   </body>
 </html>
 
@@ -37,7 +37,9 @@ import AsideMenu from "../components/AsideMenu.astro";
   }
 
   html {
-    background-color: #111;
+    font-family: "CircularStd", system-ui, sans-serif;
+    background-color: #010101;
+    color: #fff;
   }
 
   @font-face {
