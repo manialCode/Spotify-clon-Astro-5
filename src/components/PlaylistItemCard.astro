@@ -8,14 +8,14 @@ interface Props {
 
 const { playlist } = Astro.props;
 const { id, albumId, artists, color, cover, title } = playlist;
-const artistsString = artists.join(",");
+const artistsString = artists.join(" • ");
 ---
 
 <article
-  class="group relative hover:bg-zinc-800 rounded-md shadow-lg hover:shadow-lg bg-zinc-500/30 transition-all duration-300"
+  class="group relative hover:bg-zinc-800 rounded-md shadow-lg hover:shadow-lg transition-all duration-300"
 >
   <div
-    class="absolute right-4 bottom-10 translate-y-4
+    class="absolute right-4 bottom-[4.6rem] translate-y-4
   transition-all duration-500 opacity-0
   group-hover:translate-y-0 group-hover:opacity-100
   z-10"
