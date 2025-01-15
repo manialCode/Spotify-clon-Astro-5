@@ -1,46 +1,67 @@
 ---
 import { TimeIcon } from "@/icons/MusicsTableIcons";
 import { type Song } from "@/lib/data";
+import { usePlayerStore } from "@/store/playerStore";
 
 interface Props {
   songs: Song[];
 }
 
 const { songs } = Astro.props;
+
+const isCurrentSong = (song: Song, index = 0) => {
+  const { song: currentSong, playlist } = usePlayerStore(
+    (state) => state.currentMusic
+  );
+  return currentSong?.id == song.id && playlist?.albumId == song.albumId;
+};
 ---
 
-<table class="table-auto text-left min-w-full divide-y divide-gray-500/50">
+<table class="table-auto text-left min-w-full divide-y divide-gray-500/30">
   <thead class="">
-    <tr class="text-sm text-gray-300 font-light">
-      <th class="px-4 py-2">#</th>
-      <th class="px-4 py-2">Título</th>
-      <th class="px-4 py-2">Álbum</th>
-      <th class="px-4 py-2"> <TimeIcon /> </th>
+    <tr class="text-gray-300 text-base">
+      <th class="px-4 py-2 font-light">#</th>
+      <th class="px-4 py-2 font-light">Título</th>
+      <th id="album-th" class="album-i px-4 py-2 font-light">Álbum</th>
+      <th class="px-4 py-2 font-light"> <TimeIcon /> </th>
     </tr>
   </thead>
 
   <tbody>
+    <tr class="h-[16px]"></tr>
     {
       songs.map((song, index) => (
-        <tr class="text-sm text-gray-300 font-light pt-2">
-          <td class="px-4 py-3">{index + 1}</td>
+        <tr class="text-sm group text-gray-300 transition duration-200 font-light pt-2 hover:bg-white/10 overflow-hidden">
+          <td class="px-5 py-3 w-3 rounded-bl-lg rounded-tl-lg">
+            <span>{index + 1}</span>
+          </td>
           <td class="px-4 py-3 flex gap-3">
             <picture class="">
-              <img
-                src={song.image}
-                alt={song.title}
-                class="w-10 h-10 rounded-md"
-              />
+              <img src={song.image} alt={song.title} class="w-11 h-11" />
             </picture>
             <div class="flex flex-col">
-              <h3>{song.title}</h3>
-              <span>{song.artists.join(" • ")}</span>
+              <h3
+                class:list={[
+                  "font-normal hover:underline text-base",
+                  {
+                    "text-green-500": isCurrentSong,
+                    "text-white": !isCurrentSong,
+                  },
+                ]}
+              >
+                {song.title}
+              </h3>
+              <span class=" group-hover:text-white hover:underline">
+                {song.artists.join(" • ")}
+              </span>
             </div>
           </td>
-          <td class="px-4 py-3">
-            <span>{song.album}</span>
+          <td id="album-td" class="album-i px-4 py-3">
+            <span class="group-hover:text-white hover:underline font-light text-base">
+              {song.album}
+            </span>
           </td>
-          <td class="px-4 py-3">
+          <td class="px-4 py-3 rounded-br-lg rounded-tr-lg">
             <span>{song.duration}</span>
           </td>
         </tr>
@@ -48,3 +69,15 @@ const { songs } = Astro.props;
     }
   </tbody>
 </table>
+
+<style>
+  @media (max-width: 926px) {
+    table thead tr > #album-th {
+      display: none;
+      background-color: red;
+    }
+    #album-td {
+      display: none;
+    }
+  }
+</style>
