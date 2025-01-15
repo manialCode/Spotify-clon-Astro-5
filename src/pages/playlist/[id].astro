@@ -1,7 +1,8 @@
 ---
 import { allPlaylists, playlists, songs } from "@/lib/data";
 import Layout from "../../layouts/Layout.astro";
-import PlaylistItemCard from "@/components/PlaylistItemCard.astro";
+import MusicsTable from "@/components/MusicsTable.astro";
+import { CardPlayButton } from "@/components/react/CardPlayButton";
 
 const { id } = Astro.params;
 
@@ -39,7 +40,7 @@ const playlistSongs = songs.filter(
         <div class="flex-1 flex items-end">
           <div class="text-sm text-gray-300 font-normal">
             <div transition:name=`playlist ${id} artists`>
-              <span>{playlist?.artists.join(",  ")}</span>
+              <span>{playlist?.artists.join(" • ")}</span>
             </div>
             <p class="mt-1">
               <span class="text-white">50 canciones</span>, 3H aproximadamente
@@ -48,9 +49,12 @@ const playlistSongs = songs.filter(
         </div>
       </div>
     </header>
-
-    <div class="relative z-10 px-6 pt-10">
-      <!-- <Greetings/> -->
+    <div class="w-full px-[1.35rem] mt-6">
+      <CardPlayButton id={playlist?.id} client:load />
+    </div>
+    <!-- -->
+    <div class="p-6">
+      <MusicsTable songs={playlistSongs} />
     </div>
     <div
       class="absolute -z-10 inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
