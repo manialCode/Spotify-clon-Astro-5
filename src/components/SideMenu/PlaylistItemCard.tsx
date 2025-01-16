@@ -1,5 +1,5 @@
-import { MusicsTablePlayButton } from "@/components/react/MusicTablePlayButton";
-import { TitleCard } from "@/components/react/TitleCard";
+import { MusicsTablePlayButton } from "@/components/MusicsTable/MusicTablePlayButton";
+import { TitleCard } from "@/components/utils/TitleCard";
 import { usePlayerStore } from "@/store/playerStore";
 import type { Playlist } from "@/lib/data";
 import { VolumeFull } from "@/icons/VolumeIcons";
@@ -8,7 +8,7 @@ interface Props {
   playlist: Playlist;
 }
 
-export const PlaylistItem = ({ playlist }: Props) => {
+export const PlaylistItemCard = ({ playlist }: Props) => {
   const { id, artists, cover, title, albumId } = playlist;
 
   // Hook para obtener el estado actual

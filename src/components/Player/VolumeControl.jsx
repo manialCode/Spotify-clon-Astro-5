@@ -6,7 +6,7 @@ import {
 } from "@/icons/VolumeIcons";
 import { usePlayerStore } from "@/store/playerStore"; // estado global
 import { useRef } from "react";
-import { Slider } from "./Slider";
+import { Slider } from "@/components/utils/Slider";
 
 export const VolumeControl = () => {
   const volume = usePlayerStore((state) => state.volume);
