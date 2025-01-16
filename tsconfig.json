@@ -17,7 +17,7 @@
         "src/components/*"
       ],
       "@/components/react": [
-        "src/components/react*"
+        "src/components/utils*"
       ],
       "@/hooks": [
         "src/hooks/*"
