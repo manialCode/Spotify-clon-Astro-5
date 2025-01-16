@@ -1,12 +1,12 @@
 ---
 import type { Playlist } from "@/lib/data.ts";
-
+import { TitleCard } from "@/components/react/TitleCard";
 interface Props {
   playlist: Playlist;
 }
 
 const { playlist } = Astro.props;
-const { id, artists, color, cover, title } = playlist;
+const { id, artists, cover, title, albumId } = playlist;
 const artistsString = artists.join(" • ");
 ---
 
@@ -23,7 +23,7 @@ const artistsString = artists.join(" • ");
   </picture>
 
   <div class="flex flex-auto flex-col truncate">
-    <h4 class="text-sm text-white">{title}</h4>
+    <TitleCard albumId={albumId} title={title} client:load />
     <span class="text-xs text-gray-400">
       {artistsString}
     </span>

@@ -1,7 +1,9 @@
 ---
+import { pathHasLocale } from "astro:i18n";
 import Home from "../icons/Home.astro";
 import Library from "../icons/Library.astro";
 import Search from "../icons/Search.astro";
+import { PlaylistItem } from "./react/PlaylistItem";
 import SideMenuCard from "./SideMenuCard.astro";
 
 import SideMenuItem from "./SideMenuItem.astro";
@@ -28,7 +30,17 @@ import { playlists } from "@/lib/data";
         <Library />
         Tu Biblioteca
       </SideMenuItem>
-      {playlists.map((playlist) => <SideMenuCard playlist={playlist} />)}
+      {
+        playlists.map((playlist) => (
+          <PlaylistItem client:load playlist={playlist} />
+        ))
+      }
     </ul>
   </div>
 </nav>
+
+<style is:global>
+  .after-img {
+    @apply after:absolute after:bg-black/40 after:opacity-0 after:z-0 after:group-hover:opacity-100 after:transition duration-300 after:block after:rounded-md after:inset-2 after:w-12 after:h-12;
+  }
+</style>

@@ -1,31 +1,42 @@
-import { Play, Pause } from "./Player";
+import { Play, Pause } from "@/icons/PlayerIcons";
 import { usePlayerStore } from "@/store/playerStore";
-export function CardPlayButton({ id }) {
+import { getPlayListInfoById } from "../../services/ApiServices";
+
+export function CardPlayButton({ id, size = "sm" }) {
   const { currentMusic, isPlaying, setIsPlaying, setCurrentMusic } =
     usePlayerStore((state) => state);
-  // ! el boton desaparece si se reinicia la pagina y no hay una cancion elegida
-  const isPlayingPlaylist = isPlaying && currentMusic?.playlist.id === id;
+
+  const isPlayingPlaylist = isPlaying && currentMusic?.playlist?.id === id;
+  const isThisPlaylistInStore = currentMusic?.playlist?.id === id;
+
   const handleClick = () => {
-    if (isPlayingPlaylist) {
-      setIsPlaying(false);
+    if (isThisPlaylistInStore) {
+      setIsPlaying(!isPlaying);
       return;
     }
 
-    fetch(`/api/get-info.json?id=${id}`)
-      .then((res) => res.json())
+    getPlayListInfoById(id)
       .then((data) => {
         const { songs, playlist } = data;
+        setCurrentMusic({ playlist: playlist, songs: songs, song: songs[0] });
+      })
+      .then(() => {
         setIsPlaying(true);
-        setCurrentMusic({ playlist, songs, song: songs[0] });
       });
   };
+
+  const iconClassName = size === "sm" ? "w-4 h-4" : "w-5 h-5";
 
   return (
     <button
       onClick={handleClick}
-      className="card-play-button rounded-full bg-green-500 hover:bg-green-400 p-4 group-hover:scale-105 shadow-3xl"
+      className="card-play-button rounded-full text-black bg-green-500 hover:bg-green-400 p-4 transition hover:scale-105 shadow-3xl"
     >
-      {isPlayingPlaylist ? <Pause /> : <Play />}
+      {isPlayingPlaylist ? (
+        <Pause className={iconClassName} />
+      ) : (
+        <Play className={iconClassName} />
+      )}
     </button>
   );
 }

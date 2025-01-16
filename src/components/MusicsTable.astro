@@ -2,19 +2,13 @@
 import { TimeIcon } from "@/icons/MusicsTableIcons";
 import { type Song } from "@/lib/data";
 import { usePlayerStore } from "@/store/playerStore";
+import { MusicsTableContent } from "./react/MusicsTable";
 
 interface Props {
   songs: Song[];
 }
 
 const { songs } = Astro.props;
-
-const isCurrentSong = (song: Song, index = 0) => {
-  const { song: currentSong, playlist } = usePlayerStore(
-    (state) => state.currentMusic
-  );
-  return currentSong?.id == song.id && playlist?.albumId == song.albumId;
-};
 ---
 
 <table class="table-auto text-left min-w-full divide-y divide-gray-500/30">
@@ -27,57 +21,10 @@ const isCurrentSong = (song: Song, index = 0) => {
     </tr>
   </thead>
 
-  <tbody>
-    <tr class="h-[16px]"></tr>
-    {
-      songs.map((song, index) => (
-        <tr class="text-sm group text-gray-300 transition duration-200 font-light pt-2 hover:bg-white/10 overflow-hidden">
-          <td class="px-5 py-3 w-3 rounded-bl-lg rounded-tl-lg">
-            <span>{index + 1}</span>
-          </td>
-          <td class="px-4 py-3 flex gap-3">
-            <picture class="">
-              <img src={song.image} alt={song.title} class="w-11 h-11" />
-            </picture>
-            <div class="flex flex-col">
-              <h3
-                class:list={[
-                  "font-normal hover:underline text-base",
-                  {
-                    "text-green-500": isCurrentSong,
-                    "text-white": !isCurrentSong,
-                  },
-                ]}
-              >
-                {song.title}
-              </h3>
-              <span class=" group-hover:text-white hover:underline">
-                {song.artists.join(" • ")}
-              </span>
-            </div>
-          </td>
-          <td id="album-td" class="album-i px-4 py-3">
-            <span class="group-hover:text-white hover:underline font-light text-base">
-              {song.album}
-            </span>
-          </td>
-          <td class="px-4 py-3 rounded-br-lg rounded-tr-lg">
-            <span>{song.duration}</span>
-          </td>
-        </tr>
-      ))
-    }
-  </tbody>
-</table>
-
-<style>
-  @media (max-width: 926px) {
-    table thead tr > #album-th {
-      display: none;
-      background-color: red;
-    }
-    #album-td {
-      display: none;
-    }
+  <tr class="h-[16px]"></tr>
+  {
+    songs.map((song, index) => (
+      <MusicsTableContent client:load song={song} index={index} />
+    ))
   }
-</style>
+</table>

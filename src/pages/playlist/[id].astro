@@ -1,7 +1,7 @@
 ---
 import { allPlaylists, playlists, songs } from "@/lib/data";
 import Layout from "../../layouts/Layout.astro";
-import MusicsTable from "@/components/MusicsTable.astro";
+import { MusicsTable } from "@/components/react/MusicsTable";
 import { CardPlayButton } from "@/components/react/CardPlayButton";
 
 const { id } = Astro.params;
@@ -16,10 +16,14 @@ const playlistSongs = songs.filter(
   <div
     id="playlist-container"
     class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden"
+    style={`background-color: ${playlist?.color.accent}`}
     transition:name=`playlist ${id} box`
   >
+    <!-- PageHeader -->
     <header class="flex flex-row gap-8 px-6 mt-12">
-      <picture class="aspect-square w-52 h-52 flex-none">
+      <picture
+        class="aspect-square player:w-52 player:h-52 w-32 h-32 flex-none"
+      >
         <img
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
@@ -29,9 +33,11 @@ const playlistSongs = songs.filter(
       </picture>
 
       <div class="flex flex-col justify-between">
-        <h2 class="flex flex-1 items-end">Playlist</h2>
+        <h2 class="flex flex-1 items-end mb-4">Playlist</h2>
         <div>
-          <h1 class="title-clamp font-bold block text-white text-5xl">
+          <h1
+            class="title-clamp font-extrabold block text-white text-xl player:text-6xl"
+          >
             {playlist?.title}
           </h1>
           <span transition:name={`playlist ${playlist?.id} title`}></span>
@@ -43,22 +49,36 @@ const playlistSongs = songs.filter(
               <span>{playlist?.artists.join(" • ")}</span>
             </div>
             <p class="mt-1">
-              <span class="text-white">50 canciones</span>, 3H aproximadamente
+              <span class="text-white">{playlists.length} canciones</span>, 3H
+              aproximadamente
             </p>
           </div>
         </div>
       </div>
     </header>
-    <div class="w-full px-[1.35rem] mt-6">
-      <CardPlayButton id={playlist?.id} client:load />
-    </div>
-    <!-- -->
-    <div class="p-6">
-      <MusicsTable songs={playlistSongs} />
-    </div>
-    <div
-      class="absolute -z-10 inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
-    >
+    <div class="bg-black/20 mt-5 h-full">
+      <div class="w-full px-[1.35rem] mt-6">
+        <CardPlayButton size="lg" id={playlist?.id} client:load />
+      </div>
+      <!-- -->
+      <section class="p-6">
+        <MusicsTable songs={playlistSongs} client:load />
+      </section>
+      <div
+        class="absolute -z-10 inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
+      >
+      </div>
     </div>
   </div>
 </Layout>
+
+<style is:global>
+  @media (max-width: 926px) {
+    table thead tr > #album-th {
+      display: none;
+    }
+    #album-td {
+      display: none;
+    }
+  }
+</style>
