@@ -2,13 +2,14 @@ import { type Song } from "@/lib/data";
 import { TimeIcon } from "@/icons/MusicsTableIcons";
 import { MusicsTablePlayButton } from "./MusicTablePlayButton";
 import { usePlayerStore } from "@/store/playerStore";
+import { PlayingSongIcon } from "@/icons/PlayingSongIcon";
 
 interface Props {
   songs: Song[];
 }
 
 export const MusicsTable = ({ songs }: Props) => {
-  const { currentMusic } = usePlayerStore((state) => state);
+  const { currentMusic, isPlaying } = usePlayerStore((state) => state);
 
   const isCurrentSong = (song: Song) => {
     return (
@@ -23,10 +24,10 @@ export const MusicsTable = ({ songs }: Props) => {
         <tr className="text-gray-300 text-base">
           <th className="px-4 py-2 font-light">#</th>
           <th className="px-4 py-2 font-light">Título</th>
-          <th id="album-th" className="album-i  py-2 font-light">
+          <th id="album-th" className="album-i py-2 font-light">
             Álbum
           </th>
-          <th className=" player:text-center px-4  py-2 font-light">
+          <th className="  text-center px-4  py-2 font-light">
             <TimeIcon />
           </th>
         </tr>
@@ -43,7 +44,17 @@ export const MusicsTable = ({ songs }: Props) => {
             >
               <td className="relative px-5 py-2 rounded-tl-lg rounded-bl-lg w-5">
                 <span className="absolute top-5 opacity-100 transition-all group-hover:opacity-0">
-                  {index + 1}
+                  <div
+                    className={`absolute ${
+                      isCurrentSongBoolean ? "text-green-400" : "text-white"
+                    }`}
+                  >
+                    {isCurrentSongBoolean && isPlaying ? (
+                      <PlayingSongIcon />
+                    ) : (
+                      index + 1
+                    )}
+                  </div>
                 </span>
                 <div className="absolute top-5 opacity-0 transition-all group-hover:opacity-100">
                   <MusicsTablePlayButton
@@ -75,11 +86,8 @@ export const MusicsTable = ({ songs }: Props) => {
                 </div>
               </td>
               {/* Álbum */}
-              <td>
-                <span
-                  id="album-td"
-                  className="group-hover:text-white hover:underline font-light text-base"
-                >
+              <td id="album-td">
+                <span className="group-hover:text-white hover:underline font-light text-base">
                   {song.album}
                 </span>
               </td>

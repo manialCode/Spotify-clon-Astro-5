@@ -7,6 +7,7 @@ import { PlayerControl } from "./PlayerControl";
 
 import { useCurrentMusic } from "../hooks/UseCurrentMusic";
 import { usePlayerStore } from "@/store/playerStore"; // estado global
+import { PlayingSongIcon } from "@/icons/PlayingSongIcon";
 
 // Player component
 export function Player() {
