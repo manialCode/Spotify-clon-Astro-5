@@ -48,9 +48,6 @@ export function Player() {
     if (nextSong) setCurrentMusic({ ...currentMusic, song: nextSong });
   }
 
-  const handleClick = () => {
-    setIsPlaying(!isPlaying);
-  };
   return (
     <div className="flex flex-row justify-between items-center w-full px-2 z-50">
       {/* Current song preview */}

@@ -15,11 +15,11 @@ import { playlists } from "@/lib/data";
     <ul>
       <SideMenuItem href="/">
         <Home />
-        Inicio
+        <span>Inicio</span>
       </SideMenuItem>
       <SideMenuItem href="#">
         <Search />
-        Buscar
+        <span>Buscar</span>
       </SideMenuItem>
     </ul>
   </div>
@@ -27,7 +27,7 @@ import { playlists } from "@/lib/data";
     <ul>
       <SideMenuItem href="#">
         <Library />
-        Tu Biblioteca
+        <span>Tu Biblioteca</span>
       </SideMenuItem>
       {
         playlists.map((playlist) => (

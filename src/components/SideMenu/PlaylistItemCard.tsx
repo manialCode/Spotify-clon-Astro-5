@@ -2,7 +2,7 @@ import { TitleCard } from "@/components/utils/TitleCard";
 import { usePlayerStore } from "@/store/playerStore";
 import type { Playlist } from "@/lib/data";
 import { VolumeFull } from "@/icons/VolumeIcons";
-import { SidePlayButton } from "@/components/SideMenu/SidePlayButton";
+import { CardPlayButton } from "../utils/CardPlayButton";
 
 interface Props {
   playlist: Playlist;
@@ -18,19 +18,22 @@ export const PlaylistItemCard = ({ playlist }: Props) => {
   // Comparar si la canción actual es parte de este álbum
 
   const artistsString = artists.join(" • ");
-  const isCurrent = currentSong?.albumId === albumId;
+  const isCurrent = currentSong?.albumId == albumId;
 
   return (
-    <article className="relative group">
+    <article className="relative group transition ease-in-out hover:bg-zinc-800 rounded-md">
       {/* Botón para reproducir música */}
-      {currentSong && (
-        <div className="absolute top-[1.5rem] left-6 opacity-0 transition-all group-hover:opacity-100 z-10">
-          <SidePlayButton id={id} />
-        </div>
-      )}
+
+      <div
+        className="absolute inset-2 opacity-0 transition 
+       translate-y-1 group-hover:translate-y-0 duration-500
+      group-hover:opacity-100 z-10  w-1 h-1"
+      >
+        <CardPlayButton bg="non" id={id} />
+      </div>
       <a
         href={`/playlist/${id}`}
-        className="playlist-item flex  p-2 overflow-hidden items-center gap-2 rounded-md hover:bg-zinc-800"
+        className="playlist-item flex  p-2 overflow-hidden items-center gap-2 "
       >
         <picture className="h-12 w-12 flex-none after-img">
           <img

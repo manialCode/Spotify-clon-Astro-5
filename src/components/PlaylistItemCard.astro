@@ -24,7 +24,7 @@ const artistsString = artists.join(",");
   </div>
   <a
     href={`/playlist/${id}`}
-    class="playlist-item flex transition-all duration-300 relative p-2 overflow-hidden gap-2 w-44 flex-col"
+    class="playlist-item flex transition duration-300 relative p-2 overflow-hidden gap-2 w-44 flex-col"
     transition:name=`playlist ${id} box`
   >
     <picture class="aspect-square w-full h-auto flex-none">
@@ -38,13 +38,13 @@ const artistsString = artists.join(",");
 
     <div class="flex flex-auto flex-col px-2">
       <h4
-        class="text-sm text-white"
+        class="text-sm text-white hover:underline"
         transition:name={`playlist ${playlist?.id} title`}
       >
         {title}
       </h4>
       <span
-        class="text-xs text-gray-400"
+        class="text-xs text-gray-400 hover:underline"
         transition:name=`playlist ${id} artists`
       >
         {artistsString}

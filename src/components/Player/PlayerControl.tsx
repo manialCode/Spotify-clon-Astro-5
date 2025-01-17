@@ -14,12 +14,18 @@ export function PlayerControl() {
 
   const onNextSong = () => {
     const nextSong = getNextSong();
-    if (nextSong) setCurrentMusic({ ...currentMusic, song: nextSong });
+    if (nextSong) {
+      setCurrentMusic({ ...currentMusic, song: nextSong });
+      setIsPlaying(true);
+    }
   };
 
   const onPrevSong = () => {
     const prevSong = getPreviousSong();
-    if (prevSong) setCurrentMusic({ ...currentMusic, song: prevSong });
+    if (prevSong) {
+      setCurrentMusic({ ...currentMusic, song: prevSong });
+      setIsPlaying(true);
+    }
   };
 
   return (
