@@ -12,6 +12,7 @@
     "@astrojs/react": "4.1.4",
     "@astrojs/svelte": "7.0.3",
     "@astrojs/tailwind": "5.1.4",
+    "@astrojs/vercel": "^8.0.2",
     "@radix-ui/react-slider": "^1.2.2",
     "@types/react": "19.0.6",
     "@types/react-dom": "19.0.3",
