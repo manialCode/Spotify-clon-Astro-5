@@ -7,8 +7,11 @@ import svelte from '@astrojs/svelte';
 
 import react from '@astrojs/react';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), svelte(), react()],
-  output:'server'
+  output:'server',
+  adapter: vercel()
 });
