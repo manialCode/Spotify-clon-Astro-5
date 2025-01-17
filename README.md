@@ -1,6 +1,6 @@
 # Spotify Clone (Astro v5)
 
-Un clon funcional de la interfaz de Spotify construido con **Astro v5**, integrando **React**, **TypeScript**, y **Zustand** para el manejo del estado global. Este proyecto emula funcionalidades básicas de la plataforma de streaming musical, con un diseño interactivo y responsive.
+Un clon funcional de la interfaz de Spotify construido con **Astro v5**, integrando **React**, **TypeScript**, y **Zustand** para el manejo del estado global. Este proyecto emula funcionalidades básicas de la plataforma de streaming musical, con un diseño interactivo.
 
 ## 🚀 **Características**
 
