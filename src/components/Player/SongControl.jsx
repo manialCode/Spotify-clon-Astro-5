@@ -54,7 +54,7 @@ export const SongControl = ({ audio }) => {
         defaultValue={[0]}
         max={duration}
         min={0}
-        className="w-[400px]"
+        className="w-96"
         value={[currentTime]}
         onValueChange={handleSliderChange}
       />

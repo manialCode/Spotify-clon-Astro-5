@@ -68,7 +68,7 @@ export function Player() {
       </div>
 
       {/* Volume slider */}
-      <div className="grid place-content-center">
+      <div className=" player:grid hidden  place-content-center">
         <VolumeControl />
       </div>
     </div>

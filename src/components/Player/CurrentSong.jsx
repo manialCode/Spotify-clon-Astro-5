@@ -9,7 +9,7 @@ export const CurrentSong = ({ image, title, artists }) => {
           {title ? title : "No song"}
         </h3>
         <span className="opacity-80 text-xs">
-          {artists ? artists?.join(" • ") : "No album or artist?🥺"}
+          {artists ? artists?.join(" • ") : "No album or artist?"}
         </span>
       </div>
     </div>

@@ -2,6 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import SideMenu from "@/components/SideMenu/SideMenu.astro";
 import { Player } from "../components/Player/Player.jsx";
+import { MobileCard } from "@/components/mobile/MobileCard";
 interface Props {
   title: string;
 }
@@ -33,7 +34,20 @@ const { title } = Astro.props;
         Client:load - carga el componente una vez visible para el usuario
         transition:persist - Mantiene el estado a traves de las páginas
          -->
-        <Player client:load transition:name="media-player" transition:persist />
+        <div id="Player-container" class="player:inline hidden">
+          <Player
+            client:load
+            transition:name="media-player"
+            transition:persist
+          />
+        </div>
+        <div id="MobileCardPlayer" class="player:hidden inline">
+          <MobileCard
+            client:visible
+            transition:name="mobile-media-player"
+            transition:persist
+          />
+        </div>
       </footer>
     </div>
   </body>
@@ -46,7 +60,7 @@ const { title } = Astro.props;
     grid-template-areas:
       "aside main main"
       "player player player";
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: clamp(350px, auto) 1fr;
     grid-template-rows: 1fr auto;
   }
 
@@ -54,6 +68,20 @@ const { title } = Astro.props;
     font-family: "CircularStd", system-ui, sans-serif;
     background-color: #010101;
     color: #fff;
+  }
+
+  body {
+    width: 100vw;
+    height: 100dvh;
+  }
+
+  @media (max-width: 999px) {
+    #app {
+      grid-template-areas:
+        " main "
+        " player "
+        "aside ";
+    }
   }
 
   @font-face {
