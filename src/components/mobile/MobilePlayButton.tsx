@@ -1,6 +1,5 @@
-import { type Song } from "@/lib/data";
 import { Play, Pause } from "@/icons/PlayerIcons";
-import { usePlayerStore, type CurrentMusic } from "@/store/playerStore";
+import { usePlayerStore } from "@/store/playerStore";
 
 export const MobilePlayButton = () => {
   const { isPlaying, setIsPlaying } = usePlayerStore((state) => state);
