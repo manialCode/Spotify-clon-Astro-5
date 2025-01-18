@@ -9,6 +9,7 @@ const MobileCard = () => {
 
   return (
     <a
+      href={`/playlist/${playlist?.albumId}/song/${song?.id}`}
       className={`flex items-center gap-5 overflow-hidden justify-between rounded-lg h-[4.2rem]`}
       style={{ backgroundColor: bg ? bg : "#27272a" }}
     >
