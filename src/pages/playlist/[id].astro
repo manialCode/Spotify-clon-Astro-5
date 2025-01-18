@@ -20,10 +20,8 @@ const playlistSongs = songs.filter(
     transition:name=`playlist ${id} box`
   >
     <!-- PageHeader -->
-    <header class="flex flex-row gap-8 px-6 mt-12">
-      <picture
-        class="aspect-square player:w-52 player:h-52 w-32 h-32 flex-none"
-      >
+    <header class="flex player:flex-row flex-col gap-8 px-6 mt-12">
+      <picture class="aspect-square w-52 h-52 flex-none shadow-2xl mx-auto">
         <img
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
@@ -56,7 +54,9 @@ const playlistSongs = songs.filter(
         </div>
       </div>
     </header>
-    <div class="player:bg-black/20 bg-black/0 mt-5 h-full">
+    <div
+      class="mt-5 h-full player:bg-black/20 via-zinc-900 from-zinc-900 bg-gradient-to-t bg-no-repeat"
+    >
       <div class="w-full px-[1.35rem] mt-6">
         <CardPlayButton size="lg" id={playlist?.id} client:load />
       </div>
