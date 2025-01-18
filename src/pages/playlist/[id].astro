@@ -21,7 +21,9 @@ const playlistSongs = songs.filter(
   >
     <!-- PageHeader -->
     <header class="flex player:flex-row flex-col gap-8 px-6 mt-12">
-      <picture class="aspect-square w-52 h-52 flex-none shadow-2xl mx-auto">
+      <picture
+        class="aspect-square w-52 h-52 flex-none shadow-2xl player:mx-0 mx-auto"
+      >
         <img
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
