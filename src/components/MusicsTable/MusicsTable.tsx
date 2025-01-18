@@ -19,14 +19,12 @@ export const MusicsTable = ({ songs }: Props) => {
   };
 
   return (
-    <table className="table-auto text-left min-w-full divide-y divide-gray-500/20">
+    <table className="table-auto text-left min-w-full divide-y  divide-gray-500/20">
       <thead className="">
         <tr className="text-gray-300 text-base">
-          <th className="px-4 py-2 font-light">#</th>
+          <th className="th px-4 py-2 font-light">#</th>
           <th className="px-4 py-2 font-light">Título</th>
-          <th id="album-th" className="album-i py-2 font-light">
-            Álbum
-          </th>
+          <th className="album-i th py-2 font-light">Álbum</th>
           <th className="  text-center px-4  py-2 font-light">
             <TimeIcon />
           </th>
@@ -42,7 +40,7 @@ export const MusicsTable = ({ songs }: Props) => {
               key={`{song.albumId}-${song.id}`}
               className="text-gray-300 text-sm font-light hover:bg-white/10 overflow-hidden transition duration-300 group"
             >
-              <td className="relative px-5 py-2 rounded-tl-lg rounded-bl-lg w-5">
+              <td className="relative td px-5 py-2 rounded-tl-lg rounded-bl-lg w-5">
                 <span className="absolute top-5 opacity-100 transition-all group-hover:opacity-0">
                   <div
                     className={`absolute ${
@@ -86,7 +84,7 @@ export const MusicsTable = ({ songs }: Props) => {
                 </div>
               </td>
               {/* Álbum */}
-              <td id="album-td">
+              <td className="td">
                 <span className="group-hover:text-white hover:underline font-light text-base">
                   {song.album}
                 </span>
