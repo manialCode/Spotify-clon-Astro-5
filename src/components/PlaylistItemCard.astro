@@ -12,21 +12,18 @@ const artistsString = artists.join(",");
 ---
 
 <article
-  class="group relative hover:bg-zinc-800 rounded-md hover:shadow-lg transition-all ease-in duration-300"
->
+  class="group relative hover:bg-zinc-800 rounded-md hover:shadow-lg transition-all ease-in duration-300">
   <div
     class="absolute right-4 bottom-[3.8rem] translate-y-4
   transition-all duration-500 opacity-0
   group-hover:translate-y-0 group-hover:opacity-100
-  z-10"
-  >
+  z-10">
     <CardPlayButton id={id} client:visible />
   </div>
   <a
     href={`/playlist/${id}`}
     class="playlist-item flex transition duration-300 relative p-2 overflow-hidden gap-2 w-44 flex-col"
-    transition:name=`playlist ${id} box`
-  >
+    transition:name=`playlist ${id} box`>
     <picture class="aspect-square w-full h-auto flex-none">
       <img
         src={cover}
@@ -39,14 +36,12 @@ const artistsString = artists.join(",");
     <div class="flex flex-auto flex-col px-2">
       <h4
         class="text-sm text-white hover:underline"
-        transition:name={`playlist ${playlist?.id} title`}
-      >
+        transition:name={`playlist ${playlist?.id} title`}>
         {title}
       </h4>
       <span
         class="text-xs text-gray-400 hover:underline"
-        transition:name=`playlist ${id} artists`
-      >
+        transition:name=`playlist ${id} artists`>
         {artistsString}
       </span>
     </div>

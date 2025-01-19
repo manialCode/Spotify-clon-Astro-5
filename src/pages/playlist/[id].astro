@@ -15,15 +15,13 @@ const playlistSongs = songs.filter(
 <Layout title=`Playlist ${playlist?.title}`>
   <div
     id="playlist-container"
-    class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden"
+    class="relative flex flex-col bg-zinc-900 overflow-x-hidden"
     style={`background-color: ${playlist?.color.accent}`}
-    transition:name=`playlist ${id} box`
-  >
+    transition:name=`playlist ${id} box`>
     <!-- PageHeader -->
     <header class="flex player:flex-row flex-col gap-8 px-6 mt-12">
       <picture
-        class="aspect-square w-52 h-52 flex-none shadow-2xl player:mx-0 mx-auto"
-      >
+        class="aspect-square w-52 h-52 flex-none shadow-2xl player:mx-0 mx-auto">
         <img
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
@@ -36,8 +34,7 @@ const playlistSongs = songs.filter(
         <h2 class="flex flex-1 items-end mb-4">Playlist</h2>
         <div>
           <h1
-            class="title-clamp font-extrabold block text-white text-xl player:text-6xl"
-          >
+            class="title-clamp font-extrabold block text-white text-xl player:text-6xl">
             {playlist?.title}
           </h1>
           <span transition:name={`playlist ${playlist?.id} title`}></span>
@@ -57,8 +54,7 @@ const playlistSongs = songs.filter(
       </div>
     </header>
     <div
-      class="mt-5 h-full player:bg-black/20 via-zinc-900 from-zinc-900 bg-gradient-to-t bg-no-repeat"
-    >
+      class="mt-5 h-full player:bg-black/20 via-zinc-900 from-zinc-900 bg-gradient-to-t bg-no-repeat">
       <div class="w-full px-[1.35rem] mt-6">
         <CardPlayButton size="lg" id={playlist?.id} client:load />
       </div>
@@ -67,15 +63,14 @@ const playlistSongs = songs.filter(
         <MusicsTable songs={playlistSongs} client:load />
       </section>
       <div
-        class="absolute -z-10 inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
-      >
+        class="absolute -z-10 inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80">
       </div>
     </div>
   </div>
 </Layout>
 
 <style is:global>
-  @media (max-width: 1000px) {
+  @media (max-width: 50em) {
     table thead tr > .th {
       display: none;
     }

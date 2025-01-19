@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {},
     screens: {
-      player: "1000px",
+      player: "50em",
     },
   },
   plugins: [],

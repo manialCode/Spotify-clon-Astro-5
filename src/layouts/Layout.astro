@@ -20,10 +20,9 @@ const { title } = Astro.props;
     <ClientRouter fallback="none" />
   </head>
   <body>
-    <div id="app" class="relative h-screen p-2 gap-2">
+    <div id="app" class="relative p-2 gap-2">
       <aside
-        class="[grid-area:aside] player:fixed player:z-10 flex-col flex overflow-y-auto"
-      >
+        class="[grid-area:aside] player:z-10 flex-col flex overflow-y-auto">
         <SideMenu />
       </aside>
 
@@ -64,6 +63,7 @@ const { title } = Astro.props;
       "player player player";
     grid-template-columns: clamp(350px, auto) 1fr;
     grid-template-rows: 1fr auto;
+    height: 100svh;
   }
 
   html {
@@ -72,7 +72,7 @@ const { title } = Astro.props;
     color: #fff;
   }
 
-  @media (max-width: 999px) {
+  @media (max-width: 50em) {
     #app {
       grid-template-areas:
         " main "

@@ -33,7 +33,7 @@ export function CardPlayButton({ id, size = "sm", bg = "green" }) {
   return (
     <button
       onClick={handleClick}
-      className={`card-play-button rounded-full  p-4 transition  shadow-3xl ${btnClassName}`}
+      className={`card-play-button rounded-full p-4 transition  shadow-3xl ${btnClassName}`}
     >
       {isPlayingPlaylist ? (
         <Pause className={iconClassName} />
