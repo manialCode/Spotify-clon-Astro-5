@@ -27,7 +27,7 @@ const playlistSongs = songs.filter(
         <img
           src={playlist?.cover}
           alt={`Cover of ${playlist?.title}`}
-          class="object-cover w-full h-full shadow-lg"
+          class="object-cover w-full h-full rounded shadow-lg"
           transition:name={`playlist ${playlist?.id} image`}
         />
       </picture>
@@ -76,10 +76,10 @@ const playlistSongs = songs.filter(
 
 <style is:global>
   @media (max-width: 1000px) {
-    table thead tr > #album-th {
+    table thead tr > .th {
       display: none;
     }
-    #album-td {
+    .td {
       display: none;
     }
   }

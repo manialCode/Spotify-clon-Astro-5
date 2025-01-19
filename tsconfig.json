@@ -16,7 +16,7 @@
       "@/components": [
         "src/components/*"
       ],
-      "@/components/react": [
+      "@/utils": [
         "src/components/utils*"
       ],
       "@/hooks": [
@@ -27,6 +27,15 @@
       ],
       "@/lib": [
         "src/lib/*"
+      ],
+      "@/pages": [
+        "src/pages*"
+      ],
+      "@/store": [
+        "src/store*"
+      ],
+      "@/layouts": [
+        "src/layouts*"
       ],
       "@/services": [
         "src/services/*"

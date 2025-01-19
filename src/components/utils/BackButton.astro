@@ -1,7 +1,17 @@
 ---
 import LeftRow from "@/icons/LeftRow.astro";
+
+interface Props {
+  aHref?: string;
+}
+
+const { aHref } = Astro.props;
 ---
 
-<a href="/" class="text-zinc-200 hover:text-zinc-400 inline player:hidden">
+<a
+  id="anchor"
+  href={aHref ?? "/"}
+  class="text-zinc-200 hover:text-zinc-400 inline player:hidden"
+>
   <LeftRow />
 </a>

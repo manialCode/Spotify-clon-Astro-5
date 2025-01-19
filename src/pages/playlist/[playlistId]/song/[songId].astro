@@ -1,0 +1,49 @@
+---
+import MobileLayout from "@/layouts/MobileLayout.astro";
+
+import { allPlaylists, songs } from "@/lib/data";
+
+const { songId, playlistId } = Astro.params;
+const song = songs.find(
+  (song) =>
+    song.id.toString() === songId && song.albumId.toString() === playlistId
+);
+
+const artistsString = song?.artists.join(",");
+
+const color = allPlaylists[parseInt(playlistId ?? "0") - 1].color.accent;
+---
+
+<MobileLayout title={song?.title} color={color}>
+  <a href={`/playlist/${song?.albumId}`} slot="playlist"
+    ><span class="font-bold text-white text-sm">{song?.album}</span></a
+  >
+  <div>
+    <header class="flex flex-col gap-8 px-1">
+      <picture
+        class="aspect-square max-w-[500px] max-h-[500px] flex-none player:mx-0 mx-auto"
+      >
+        <img
+          src={song?.image}
+          alt={`Cover of ${song?.album}`}
+          class="object-cover rounded shadow-lg"
+          transition:name={`playlist ${song?.albumId} image`}
+        />
+      </picture>
+      <div class="flex flex-auto flex-col px-2">
+        <h4
+          class="text-white hover:underline font-bold text-lg"
+          transition:name={`playlist ${song?.albumId} title`}
+        >
+          {song?.title}
+        </h4>
+        <span
+          class="text-xs text-gray-400 hover:underline text-semibold"
+          transition:name=` ${song?.albumId} artists`
+        >
+          {artistsString}
+        </span>
+      </div>
+    </header>
+  </div>
+</MobileLayout>
