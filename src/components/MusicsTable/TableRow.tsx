@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { allPlaylists, songs, type Song } from "@/lib/data";
+import { type Song } from "@/lib/data";
 import { MusicsTablePlayButton } from "./MusicTablePlayButton";
 import { PlayingSongIcon } from "@/icons/PlayingSongIcon";
-import { usePlayerStore } from "@/store/playerStore";
-
+import "./tr-hover.css";
 interface TableRowProps {
   song: Song | any;
   index: number;
