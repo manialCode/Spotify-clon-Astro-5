@@ -22,7 +22,8 @@ const { title } = Astro.props;
   <body>
     <div id="app" class="relative p-2 gap-2">
       <aside
-        class="[grid-area:aside] player:z-10 flex-col flex overflow-y-auto">
+        class="[grid-area:aside] player:z-10 flex-col flex overflow-y-auto"
+      >
         <SideMenu />
       </aside>
 
@@ -119,5 +120,23 @@ const { title } = Astro.props;
     font-weight: 900;
     font-style: normal;
     font-display: swap;
+  }
+
+  /* Estilos para la barra de desplazamiento */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.7);
   }
 </style>
