@@ -1,0 +1,10 @@
+@media (max-width: 50em) {
+  .tr-hover:active {
+    transition: all 0.5s ease;
+    background-color: rgb(161 161 170 / 0.1);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+  }
+}
