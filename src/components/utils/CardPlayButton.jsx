@@ -25,7 +25,7 @@ export function CardPlayButton({ id, size = "sm", bg = "green" }) {
       });
   };
 
-  const iconClassName = size === "sm" ? "w-4 h-4" : "w-5 h-5";
+  const iconClassName = size === "sm" ? "w-4 h-4" : "m-[0.17rem] w-5 h-5";
   const btnClassName =
     bg === "non"
       ? "bg-transparent text-white hover:scale-110"
