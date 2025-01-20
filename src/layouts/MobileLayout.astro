@@ -1,7 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import ArrowDown from "@/icons/ArrowDown.astro";
-
+import CloseMobilePlayer from "@/components/utils/CloseMobilePlayer";
 interface Props {
   title?: string | undefined;
   color: string;
@@ -10,17 +9,7 @@ interface Props {
 const { title, color } = Astro.props;
 ---
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const app = document.getElementById("app");
-
-    // Delegación de eventos para manejar clics en el botón
-    app?.addEventListener("click", () => {
-      window.history.back();
-    });
-  });
-</script>
-
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -41,9 +30,7 @@ const { title, color } = Astro.props;
         class="[grid-area:nav] flex overflow-y-auto justify-between px-4 pt-4 mb-20"
       >
         <!-- todo:find how to make the button back to the last url -->
-        <button id="backButton" class="hover:text-zinc-400">
-          <ArrowDown />
-        </button>
+        <CloseMobilePlayer client:visible />
         <slot name="playlist" />
         <span class="w-[24px] h-[24px]">...</span>
       </nav>
