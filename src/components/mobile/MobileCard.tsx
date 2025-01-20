@@ -1,6 +1,7 @@
 import { usePlayerStore } from "@/store/playerStore";
 
 import { MobilePlayButton } from "./MobilePlayButton";
+import { HeartOutline } from "@/icons/Heart";
 
 const MobileCard = () => {
   const { currentMusic, setCurrentMusic, isPlaying, setIsPlaying } =
@@ -18,7 +19,7 @@ const MobileCard = () => {
         className="w-full"
       >
         <div className="flex items-center gap-5">
-          <picture className="w-16 h-16 p-1 aspect-square overflow-hidden">
+          <picture className="w-14 h-14 p-1 aspect-square overflow-hidden">
             <img
               src={song?.image}
               className="rounded"
@@ -35,7 +36,8 @@ const MobileCard = () => {
           </div>
         </div>
       </a>
-      <div className="mr-5 z-10 absolute right-2 bottom-[1.15rem]">
+      <div className="mx-4 flex gap-5 ">
+        <HeartOutline />
         {song && <MobilePlayButton />}
       </div>
     </div>
