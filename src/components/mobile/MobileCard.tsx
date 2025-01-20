@@ -11,8 +11,6 @@ export const MobileCard = () => {
   const { playlist, song } = currentMusic;
   const bg = playlist?.color.dark;
 
-  const { getNextSong, getPreviousSong } = useCurrentMusic(currentMusic);
-
   const cardRef = useRef<HTMLDivElement>(null);
 
   return (
