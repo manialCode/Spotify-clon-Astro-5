@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { usePlayerStore } from "@/store/playerStore";
-import { useCurrentMusic } from "../hooks/UseCurrentMusic";
 import CardHeader from "@/components/mobile/CardHeader";
 import CardActions from "@/components/mobile/CardActions";
 import { MobileSlider } from "./MobileSlider";
