@@ -1,15 +1,17 @@
-import { type Song } from "@/lib/data";
+import { type Song, allPlaylists } from "@/lib/data";
 import { TimeIcon } from "@/icons/MusicsTableIcons";
 import { MusicsTablePlayButton } from "./MusicTablePlayButton";
 import { usePlayerStore } from "@/store/playerStore";
 import { PlayingSongIcon } from "@/icons/PlayingSongIcon";
+import { useEffect, useState } from "react";
 
 interface Props {
   songs: Song[];
 }
 
 export const MusicsTable = ({ songs }: Props) => {
-  const { currentMusic, isPlaying } = usePlayerStore((state) => state);
+  const { currentMusic, isPlaying, setCurrentMusic, setIsPlaying } =
+    usePlayerStore((state) => state);
 
   const isCurrentSong = (song: Song) => {
     return (
@@ -18,9 +20,35 @@ export const MusicsTable = ({ songs }: Props) => {
     );
   };
 
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDisabled(window.innerWidth > 800); // 50em = 800px
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleClick = (song: Song) => {
+    if (!isDisabled) {
+      setCurrentMusic({
+        playlist: allPlaylists[song.albumId - 1],
+        song,
+        songs,
+      });
+      setIsPlaying(true);
+    }
+  };
+
   return (
-    <table className="table-auto text-left min-w-full divide-y  divide-gray-500/20">
-      <thead className="">
+    <table className="table-auto text-left min-w-full player:divide-y  player:divide-gray-500/20">
+      <thead className="opacity-0 player:opacity-100 ">
         <tr className="text-gray-300 text-base">
           <th className="th px-4 py-2 font-light">#</th>
           <th className="px-4 py-2 font-light">Título</th>
@@ -38,7 +66,8 @@ export const MusicsTable = ({ songs }: Props) => {
           return (
             <tr
               key={`{song.albumId}-${song.id}`}
-              className="text-gray-300 text-sm font-light hover:bg-white/10 overflow-hidden transition duration-300 group"
+              className="text-gray-300 text-sm font-light hover:bg-zinc-400/10 overflow-hidden transition-all duration-300 group"
+              onClick={() => handleClick(song)}
             >
               <td className="relative td px-5 py-2 rounded-tl-lg rounded-bl-lg w-5">
                 <span className="absolute top-5 opacity-100 transition-all group-hover:opacity-0">
@@ -90,8 +119,8 @@ export const MusicsTable = ({ songs }: Props) => {
                 </span>
               </td>
               {/* Duración */}
-              <td className="px-4 py-2 rounded-tr-lg rounded-br-lg">
-                <span>{song.duration}</span>
+              <td className="player:text-left text-right px-4 py-2 player:rounded-tr-lg player:rounded-br-lg">
+                <span>{isDisabled ? song.duration : "..."}</span>
               </td>
             </tr>
           );
