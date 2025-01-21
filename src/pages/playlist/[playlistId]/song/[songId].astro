@@ -1,17 +1,18 @@
 ---
 import MobileLayout from "@/layouts/MobileLayout.astro";
 
-import { allPlaylists, songs } from "@/lib/data";
+import { allPlaylists, songs, type Song, type Playlist } from "@/lib/data";
 
 const { songId, playlistId } = Astro.params;
-const song = songs.find(
+const song: Song | undefined = songs.find(
   (song) =>
     song.id.toString() === songId && song.albumId.toString() === playlistId
 );
 
 const artistsString = song?.artists.join(",");
-
-const color = allPlaylists[parseInt(playlistId ?? "0") - 1].color.accent;
+const index = allPlaylists.findIndex((playlist) => playlist.id === playlistId);
+const playlist: Playlist = allPlaylists[index];
+const color = playlist.color.accent;
 ---
 
 <MobileLayout title={song?.title} color={color}>
@@ -28,6 +29,7 @@ const color = allPlaylists[parseInt(playlistId ?? "0") - 1].color.accent;
           alt={`Cover of ${song?.album}`}
           class="object-cover rounded shadow-lg"
           transition:name={`playlist ${song?.albumId} image`}
+          loading="lazy"
         />
       </picture>
       <div class="flex flex-auto flex-col px-2">

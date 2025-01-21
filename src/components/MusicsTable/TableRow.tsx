@@ -1,6 +1,7 @@
 import { type Song } from "@/lib/data";
 import { MusicsTablePlayButton } from "./MusicTablePlayButton";
 import { PlayingSongIcon } from "@/icons/PlayingSongIcon";
+import React from "react";
 import "./tr-hover.css";
 interface TableRowProps {
   song: Song | any;
@@ -45,7 +46,12 @@ const TableRow: React.FC<TableRowProps> = ({
       {/* Información de la canción */}
       <td className="px-4 py-2 flex gap-3">
         <picture>
-          <img src={song.image} alt={song.title} className="w-11 h-11" />
+          <img
+            src={song.image}
+            alt={song.title}
+            className="w-11 h-11"
+            loading="lazy"
+          />
         </picture>
         <div className="flex flex-col">
           <h3
@@ -74,4 +80,4 @@ const TableRow: React.FC<TableRowProps> = ({
   );
 };
 
-export default TableRow;
+export default React.memo(TableRow);

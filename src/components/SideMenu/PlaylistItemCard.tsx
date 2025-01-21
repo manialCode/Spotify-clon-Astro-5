@@ -40,6 +40,7 @@ export const PlaylistItemCard = ({ playlist }: Props) => {
             src={cover}
             alt={`Cover of ${title} by ${artistsString}`}
             className="object-cover w-full h-full rounded-md"
+            loading="lazy"
           />
         </picture>
         <div className="flex flex-auto flex-col truncate">

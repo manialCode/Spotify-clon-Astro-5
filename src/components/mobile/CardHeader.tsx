@@ -104,6 +104,7 @@ const CardHeader: React.FC<CardHeaderProps> = ({ song, playlist }) => {
             src={song?.image}
             className="rounded"
             alt={`Cover of ${song?.title}`}
+            loading="lazy"
           />
         </picture>
         <div className="flex flex-col text-left">

@@ -16,4 +16,4 @@ const TableHeader: React.FC = () => {
   );
 };
 
-export default TableHeader;
+export default React.memo(TableHeader);

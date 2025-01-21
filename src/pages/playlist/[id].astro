@@ -34,6 +34,7 @@ const playlistSongs = songs.filter(
           alt={`Cover of ${playlist?.title}`}
           class="object-cover w-full h-full rounded shadow-lg"
           transition:name={`playlist ${playlist?.id} image`}
+          loading="lazy"
         />
       </picture>
 
