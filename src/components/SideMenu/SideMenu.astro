@@ -13,19 +13,20 @@ import { playlists } from "@/lib/data";
 <nav class="flex flex-col flex-1 gap-2">
   <div class="player:bg-zinc-900 bg-opacity-0 rounded-lg p-2 hidden-span">
     <ul
-      class="flex player:flex-col justify-between player:place-items-start items-center"
+      class="flex player:flex-col justify-between player:place-items-start items-center player:px-0 px-14"
     >
       <SideMenuItem href="/">
         <Home />
-        <span>Inicio</span>
+        <span class="player:font-semibold font-light">Inicio</span>
       </SideMenuItem>
       <SideMenuItem href="#">
         <Search />
-        <span>Buscar</span>
+        <span class="player:font-semibold font-light">Buscar</span>
       </SideMenuItem>
       <div class="player:hidden inline">
         <SideMenuItem href="#">
           <Library />
+          <span class="player:font-semibold font-light">Tu Biblioteca</span>
         </SideMenuItem>
       </div>
     </ul>
@@ -48,9 +49,5 @@ import { playlists } from "@/lib/data";
 <style is:global>
   .after-img {
     @apply after:absolute after:bg-black/40 after:opacity-0 after:z-0 after:group-hover:opacity-100 after:transition duration-300 after:block after:rounded-md after:inset-2 after:w-12 after:h-12;
-  }
-
-  .hidden-span span {
-    @apply hidden player:inline;
   }
 </style>
