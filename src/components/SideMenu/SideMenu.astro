@@ -13,7 +13,7 @@ import { playlists } from "@/lib/data";
 <nav class="flex flex-col flex-1 gap-2">
   <div class="player:bg-zinc-900 bg-opacity-0 rounded-lg p-2 hidden-span">
     <ul
-      class="flex player:flex-col justify-between player:place-items-start items-center player:px-0 px-14"
+      class="flex player:flex-col justify-between player:place-items-start items-center mb:px-12 px-0"
     >
       <SideMenuItem href="/">
         <Home />
@@ -26,7 +26,9 @@ import { playlists } from "@/lib/data";
       <div class="player:hidden inline">
         <SideMenuItem href="#">
           <Library />
-          <span class="player:font-semibold font-light">Tu Biblioteca</span>
+          <span class="player:font-semibold font-light mb:text-sm"
+            >Tu Biblioteca</span
+          >
         </SideMenuItem>
       </div>
     </ul>

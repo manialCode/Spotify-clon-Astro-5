@@ -5,6 +5,7 @@ export default {
     extend: {},
     screens: {
       player: "50em",
+      mb: "362px",
     },
   },
   plugins: [],
