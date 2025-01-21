@@ -1,5 +1,4 @@
 ---
-import { pathHasLocale } from "astro:i18n";
 import Home from "@/icons/Home.astro";
 import Library from "@/icons/Library.astro";
 import Search from "@/icons/Search.astro";
@@ -13,7 +12,7 @@ import { playlists } from "@/lib/data";
 <nav class="flex flex-col flex-1 gap-2">
   <div class="player:bg-zinc-900 bg-opacity-0 rounded-lg p-2 hidden-span">
     <ul
-      class="flex player:flex-col justify-between player:place-items-start items-center mb:px-12 px-0"
+      class="flex player:flex-col justify-between player:place-items-start items-center sm:px-10"
     >
       <SideMenuItem href="/">
         <Home />
