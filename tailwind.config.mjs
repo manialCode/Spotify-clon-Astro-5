@@ -5,6 +5,7 @@ export default {
     extend: {},
     screens: {
       player: "50em",
+      lg: "1024px",
       mb: "362px",
     },
   },
