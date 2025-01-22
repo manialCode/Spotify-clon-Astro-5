@@ -26,12 +26,13 @@ export const Play = ({ className = "" }) => (
   </svg>
 );
 
-export const Prev = () => (
+export const Prev = ({ className = " " }) => (
   <svg
     fill="currentColor"
     role="img"
     height="16"
     width="16"
+    className={className}
     aria-hidden="true"
     viewBox="0 0 16 16"
   >
@@ -39,12 +40,13 @@ export const Prev = () => (
   </svg>
 );
 
-export const Next = () => (
+export const Next = ({ className = " " }) => (
   <svg
     fill="currentColor"
     role="img"
     height="16"
     width="16"
+    className={className}
     aria-hidden="true"
     viewBox="0 0 16 16"
   >
