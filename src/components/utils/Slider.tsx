@@ -23,3 +23,26 @@ export const Slider = React.forwardRef<
 ));
 
 Slider.displayName = SliderPrimitive.Root.displayName;
+
+export const White = React.forwardRef<
+  React.ComponentRef<typeof SliderPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <SliderPrimitive.Root
+    ref={ref}
+    className={cn(
+      "relative flex touch-none select-none items-center group",
+
+      className
+    )}
+    {...props}
+  >
+    <SliderPrimitive.Track className="relative h-1 w-full grow overflow-hidden rounded-full bg-zinc-600/20">
+      <SliderPrimitive.Range className="absolute h-full bg-white group-hover:bg-white" />
+    </SliderPrimitive.Track>
+
+    <SliderPrimitive.Thumb className="hidden group-hover:block h-3 w-3 bg-white rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" />
+  </SliderPrimitive.Root>
+));
+
+White.displayName = SliderPrimitive.Root.displayName;
