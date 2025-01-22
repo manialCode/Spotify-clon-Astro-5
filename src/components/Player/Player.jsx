@@ -59,7 +59,7 @@ export function Player() {
       {/* PlayButton */}
       <div className="grid place-content-center gap-4 flex-1">
         <div className="flex justify-center flex-col items-center">
-          <PlayerControl />
+          <PlayerControl xl={false} />
 
           {/* TimeLine */}
           <SongControl audio={audioRef} />
