@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { usePlayerStore } from "@/store/playerStore";
 import CardHeader from "@/components/mobile/CardHeader";
 import CardActions from "@/components/mobile/CardActions";
-import { SongControl } from "../Player/SongControl";
 
 export const MobileCard = () => {
   const { currentMusic } = usePlayerStore((state) => state);
