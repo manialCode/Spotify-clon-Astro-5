@@ -4,6 +4,8 @@ import Layout from "../layouts/Layout.astro";
 import Greetings from "@/components/svelte/Greetings.svelte";
 import PlaylistItemCard from "@/components/PlaylistItemCard.astro";
 import PlaylistItemHeader from "@/components/PlaylistItemHeader.astro";
+import ArrowLeft from "@/icons/ArrowLeft.astro";
+import ArrowRight from "@/icons/ArrowRight.astro";
 ---
 
 <Layout title="Spotify clone">
@@ -15,7 +17,7 @@ import PlaylistItemHeader from "@/components/PlaylistItemHeader.astro";
     <div class="relative z-10 px-6 pt-10">
       <Greetings />
       <div
-        class="grid player:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-2 place-content-center my-6 overscroll-x-contain"
+        class="grid player:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-2 place-content-center my-6"
       >
         {
           playlists.map((playlist) => (
@@ -23,8 +25,10 @@ import PlaylistItemHeader from "@/components/PlaylistItemHeader.astro";
           ))
         }
       </div>
-      <h2 class="font-bold text-3xl">Escuchado recientemente</h2>
-      <div class="grid grid-flow-col gap-2 overflow-x-auto">
+      <h2 class="font-bold text-3xl mt-10">Escuchado recientemente</h2>
+      <div
+        class="grid grid-flow-col gap-2 overflow-x-auto snap-inline player:flex player:flex-wrap mt-6"
+      >
         {playlists.map((playlist) => <PlaylistItemCard playlist={playlist} />)}
       </div>
     </div>
