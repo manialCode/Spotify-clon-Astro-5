@@ -22,6 +22,11 @@ Un clon funcional de la interfaz de Spotify construido con **Astro v5**, integra
 
 ![Vista de Playlist](screenshots/playlist-view.png)
 
+### Vista  en Mobile
+
+| ![Página Principal](screenshots/homepage-mobile.png) | ![Vista de Playlist](screenshots/playlist-view-mobile.png) | ![Vista de reproductor](screenshots/Mobile-Player.png) |
+|------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------|
+
 ---
 
 ## 🛠️ **Tecnologías Usadas**
