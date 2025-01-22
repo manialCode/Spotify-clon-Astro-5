@@ -5,9 +5,7 @@ export const CurrentSong = ({ image, title, artists }) => {
         <img src={image} alt={title} loading="lazy" />
       </picture>
       <div className="flex  flex-col">
-        <h3 className="font-semibold text-sm block">
-          {title ? title : "No song"}
-        </h3>
+        <h3 className="font-semibold text-sm ">{title ? title : "No song"}</h3>
         <span className="opacity-80 text-xs">
           {artists ? artists?.join(" • ") : "No album or artist?"}
         </span>

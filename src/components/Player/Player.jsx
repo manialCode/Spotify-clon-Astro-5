@@ -50,15 +50,15 @@ export function Player() {
   }
 
   return (
-    <div className="flex flex-row justify-between items-center w-full px-2 z-50">
+    <div className="grid grid-cols-3 w-full px-2 z-50 gap-4">
       {/* Current song preview */}
-      <div className="w-[200px]">
+      <div className="">
         <CurrentSong {...currentMusic.song} />
       </div>
 
       {/* PlayButton */}
       <div className="grid place-content-center gap-4 flex-1">
-        <div className="flex justify-center flex-col items-center">
+        <div className="flex justify-center flex-col items-center ml-14">
           <PlayerControl xl={false} />
 
           {/* TimeLine */}
@@ -68,7 +68,7 @@ export function Player() {
       </div>
 
       {/* Volume slider */}
-      <div className=" player:grid hidden  place-content-center">
+      <div className=" player:grid hidden my-auto place-content-end mr-10 ">
         <VolumeControl />
       </div>
     </div>

@@ -48,12 +48,13 @@ export const PlaylistItemCard = ({ playlist }: Props) => {
           <TitleCard albumId={albumId} title={title} />
           <span className="text-xs text-gray-400">{artistsString}</span>
         </div>
-        {isCurrent && (
-          <span className="text-green-500">
-            {" "}
-            <VolumeFull />{" "}
-          </span>
-        )}
+        <span
+          className={`text-green-500 ${
+            isCurrent ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <VolumeFull />
+        </span>
       </a>
     </article>
   );
