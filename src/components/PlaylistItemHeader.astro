@@ -1,0 +1,56 @@
+---
+import type { Playlist } from "@/lib/data.ts";
+import { CardPlayButton } from "@/components/utils/CardPlayButton";
+
+interface Props {
+  playlist: Playlist;
+}
+
+const { playlist } = Astro.props;
+const { id, albumId, artists, color, cover, title } = playlist;
+const artistsString = artists.join(",");
+---
+
+<article
+  class="group relative bg-zinc-800/50 rounded-md hover:bg-zinc-600/50 transition-all ease-in duration-300"
+>
+  <div
+    class="absolute right-1 bottom-1 translate-y-4
+  transition-all duration-500 opacity-0
+  group-hover:translate-y-0 group-hover:opacity-100
+  z-10"
+  >
+    <CardPlayButton id={id} size="sm" client:visible />
+  </div>
+  <a
+    href={`/playlist/${id}`}
+    class="grid playlist-item transition duration-300 relative overflow-hidden h-14 w-full"
+    transition:name=`playlist ${id} box`
+  >
+    <picture class="aspect-square w-full h-auto flex-none">
+      <img
+        src={cover}
+        alt={`Cover of ${title} by ${artistsString}`}
+        class="object-cover w-14 h-14 rounded-l-md"
+        transition:name={`playlist ${id} image`}
+        loading="lazy"
+      />
+    </picture>
+    <div>
+      <h4
+        class="text-sm text-left text-white font-bold hover:underline"
+        transition:name={`playlist ${playlist?.id} title`}
+      >
+        {title}
+      </h4>
+    </div>
+  </a>
+</article>
+
+<style>
+  .playlist-item {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+  }
+</style>
