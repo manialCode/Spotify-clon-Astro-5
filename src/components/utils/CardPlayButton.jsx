@@ -41,9 +41,6 @@ export function CardPlayButton({ id, size = "sm", bg = "green" }) {
       ) : (
         <Play className={iconClassName} />
       )}
-      <span class="absolute -left-2 top-[3.8rem] w-max px-2 py-1 bg-zinc-800/80 text-white text-xs rounded -translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition duration-300 player:inline hidden">
-        Reproducir
-      </span>
     </button>
   );
 }
