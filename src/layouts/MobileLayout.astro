@@ -15,7 +15,6 @@ const { title, color } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title ?? "No current Song"}</title>
     <ClientRouter fallback="none" />
   </head>
@@ -24,14 +23,17 @@ const { title, color } = Astro.props;
       id="app"
       style={`background: linear-gradient(to bottom, ${color}, #18181b), 
       #18181b no-repeat`}
-      class="relative bg-zinc-900 overflow-hidden h-screen p-2 gap-2"
+      class="relative bg-zinc-900 overflow-hidden h-screen px-6 pt-12"
     >
       <nav
-        class="[grid-area:nav] flex overflow-y-auto justify-between px-4 pt-4 mb-20"
+        class="[grid-area:nav] flex items-start overflow-y-auto justify-between"
       >
         <!-- todo:find how to make the button back to the last url -->
         <CloseMobilePlayer client:visible />
-        <slot name="playlist" />
+        <h2 class="text-center">
+          <p class="uppercase text-[.6rem]">Reproduciendo desde playlist</p>
+          <slot name="playlist" />
+        </h2>
         <span class="w-[24px] h-[24px]">...</span>
       </nav>
       <main class="[grid-area:main]">
@@ -57,7 +59,9 @@ const { title, color } = Astro.props;
       " nav "
       " main "
       "player";
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: repeat(2, auto) 1fr;
+    place-content: center;
+    gap: 5rem;
   }
 
   html {

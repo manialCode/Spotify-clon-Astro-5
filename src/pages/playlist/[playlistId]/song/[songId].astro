@@ -1,4 +1,6 @@
 ---
+import FocusSongPlayer from "@/components/Player/FocusSongPlayer";
+import SongC from "@/components/utils/Song";
 import MobileLayout from "@/layouts/MobileLayout.astro";
 
 import { allPlaylists, songs, type Song, type Playlist } from "@/lib/data";
@@ -9,7 +11,6 @@ const song: Song | undefined = songs.find(
     song.id.toString() === songId && song.albumId.toString() === playlistId
 );
 
-const artistsString = song?.artists.join(",");
 const index = allPlaylists.findIndex((playlist) => playlist.id === playlistId);
 const playlist: Playlist = allPlaylists[index];
 const color = playlist.color.accent;
@@ -32,20 +33,10 @@ const color = playlist.color.accent;
           loading="lazy"
         />
       </picture>
-      <div class="flex flex-auto flex-col px-2">
-        <h4
-          class="text-white hover:underline font-bold text-lg"
-          transition:name={`playlist ${song?.albumId} title`}
-        >
-          {song?.title}
-        </h4>
-        <span
-          class="text-xs text-gray-400 hover:underline text-semibold"
-          transition:name=` ${song?.albumId} artists`
-        >
-          {artistsString}
-        </span>
-      </div>
     </header>
+  </div>
+  <div slot="player" class="text-left">
+    <SongC client:only="react" />
+    <FocusSongPlayer client:load />
   </div>
 </MobileLayout>
