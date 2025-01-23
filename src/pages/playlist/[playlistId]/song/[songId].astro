@@ -1,6 +1,4 @@
 ---
-import FocusSongPlayer from "@/components/Player/FocusSongPlayer";
-import SongC from "@/components/utils/Song";
 import MobileLayout from "@/layouts/MobileLayout.astro";
 
 import { allPlaylists, songs, type Song, type Playlist } from "@/lib/data";
@@ -20,23 +18,17 @@ const color = playlist.color.accent;
   <a href={`/playlist/${song?.albumId}`} slot="playlist"
     ><span class="font-bold text-white text-sm">{song?.album}</span></a
   >
-  <div>
-    <header class="flex flex-col gap-8 px-1">
-      <picture
-        class="aspect-square max-w-[500px] max-h-[500px] flex-none player:mx-0 mx-auto"
-      >
-        <img
-          src={song?.image}
-          alt={`Cover of ${song?.album}`}
-          class="object-cover rounded shadow-lg"
-          transition:name={`playlist ${song?.albumId} image`}
-          loading="lazy"
-        />
-      </picture>
-    </header>
-  </div>
-  <div slot="player" class="text-left">
-    <SongC client:only="react" />
-    <FocusSongPlayer client:load />
-  </div>
+  <section class="flex flex-col gap-8 px-1">
+    <picture
+      class="aspect-square max-w-[400px] max-h-[400px] flex-none mx-auto"
+    >
+      <img
+        src={song?.image}
+        alt={`Cover of ${song?.album}`}
+        class="object-cover rounded shadow-lg"
+        transition:name={`playlist ${song?.albumId} image`}
+        loading="lazy"
+      />
+    </picture>
+  </section>
 </MobileLayout>
