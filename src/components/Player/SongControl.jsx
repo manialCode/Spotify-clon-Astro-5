@@ -2,15 +2,34 @@ import { useEffect, useState } from "react";
 import { Slider, White } from "../utils/Slider";
 
 export const SongControl = ({ audio }) => {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(() => {
+    // Verificar si estamos en un entorno de navegador
+    if (typeof window !== "undefined") {
+      // Recuperar currentTime de localStorage
+      const savedTime = localStorage.getItem("currentTime");
+      return savedTime ? parseFloat(savedTime) : 0;
+    }
+    return 0;
+  });
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     if (!audio.current) return;
 
+    // Establecer currentTime al montar el componente
+    const savedTime = localStorage.getItem("currentTime");
+    if (savedTime) {
+      audio.current.currentTime = parseFloat(savedTime);
+      setCurrentTime(parseFloat(savedTime));
+    }
+
     // Función para actualizar el tiempo actual
     const handleTimeUpdate = () => {
       setCurrentTime(audio.current.currentTime);
+      // Guardar currentTime en localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("currentTime", audio.current.currentTime);
+      }
     };
 
     // Función para actualizar la duración
@@ -42,6 +61,10 @@ export const SongControl = ({ audio }) => {
     if (audio.current) {
       audio.current.currentTime = newCurrentTime;
       setCurrentTime(newCurrentTime);
+      // Guardar currentTime en localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("currentTime", newCurrentTime);
+      }
     }
   };
 
