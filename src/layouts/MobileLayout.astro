@@ -1,6 +1,8 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import CloseMobilePlayer from "@/components/utils/CloseMobilePlayer";
+import FocusSongPlayer from "@/components/Player/FocusSongPlayer";
+import SongC from "@/components/utils/Song";
 interface Props {
   title?: string | undefined;
   color: string;
@@ -23,25 +25,28 @@ const { title, color } = Astro.props;
       id="app"
       style={`background: linear-gradient(to bottom, ${color}, #18181b), 
       #18181b no-repeat`}
-      class="relative bg-zinc-900 overflow-hidden h-screen px-6 pt-12"
+      class="relative bg-zinc-900 overflow-hidden px-6 pt-12"
     >
-      <nav
-        class="[grid-area:nav] flex items-start overflow-y-auto justify-between"
-      >
-        <!-- todo:find how to make the button back to the last url -->
-        <CloseMobilePlayer client:visible />
-        <h2 class="text-center">
-          <p class="uppercase text-[.6rem]">Reproduciendo desde playlist</p>
-          <slot name="playlist" />
-        </h2>
-        <span class="w-[24px] h-[24px]">...</span>
-      </nav>
+      <header class="[grid-area:nav]">
+        <nav class="flex items-start overflow-y-auto justify-between">
+          <!-- todo:find how to make the button back to the last url -->
+          <CloseMobilePlayer client:visible />
+          <h2 class="text-center">
+            <p class="uppercase text-[.6rem]">Reproduciendo desde playlist</p>
+            <slot name="playlist" />
+          </h2>
+          <span class="w-[24px] h-[24px]">...</span>
+        </nav>
+      </header>
       <main class="[grid-area:main]">
         <slot />
       </main>
 
       <footer class="[grid-area:player]">
-        <slot name="player" />
+        <div class="text-left">
+          <SongC client:only="react" />
+          <FocusSongPlayer client:load />
+        </div>
       </footer>
     </div>
     <div
@@ -59,7 +64,7 @@ const { title, color } = Astro.props;
       " nav "
       " main "
       "player";
-    grid-template-rows: repeat(2, auto) 1fr;
+    grid-template-rows: auto auto 1fr;
     place-content: center;
     gap: 5rem;
   }
@@ -72,7 +77,7 @@ const { title, color } = Astro.props;
 
   body {
     width: 100vw;
-    height: 100dvh;
+    max-height: 100%;
   }
 
   @font-face {
